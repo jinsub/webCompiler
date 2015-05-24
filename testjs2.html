@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- fixto-->
+    <script>window.jQuery || document.write('<script src="jquery.js"><\/script>')</script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-5002e1366084f15f"></script>
+    <script src="fixto.min.js"></script>
+    <style>
+        #header {
+            background-color:#5cb85c;
+            color:white;
+            text-align:center;
+            height:70px;
+            padding:5px;
+        }
+        #nav {
+            line-height:30px;
+            background-color:white;
+            width:150px;
+            height:420px;
+            float:left;
+            padding:5px;
+        }
+        #section {
+            width:350px;
+            background-color:white;
+            height:3000px;
+            float:right;
+            padding:10px;
+        }
+        #footer {
+            background-color:#5cb85c;
+            color:white;
+            clear:both;
+            text-align:center;
+            padding:30px;
+        }
+        .modal-header, h4, .close {
+            background-color: #5cb85c;
+            color:white !important;
+            text-align: center;
+            font-size: 30px;
+        }
+        .modal-footer {
+            background-color: #f9f9f9;
+        }
+        .btn-success {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        var decCount = 0;
+        var stmtCount = 0;
+        var flag =0;
+        function Program(){
+            ctx.beginPath();
+            ctx.lineWidth="15";
+            ctx.strokeStyle="red";
+            ctx.rect(0, flag,700,350);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Program",10,20);
+            flag += 20;
+        }
+        function Declarations(){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="blue";
+            ctx.rect(20, flag, 310, 240);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Declarations",30,50);
+            flag += 20;
+        }
+        function Statements(){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="green";
+            ctx.rect(370, flag, 310, 240);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Statements",380,50);
+        }
+        function Declaration(){
+            if(decCount < 3){
+                decDraw(40,65+decCount*70);
+                decCount++;
+            }
+        }
+        function Statement(){
+            if(stmtCount < 3){
+                stmtDraw(390,65+stmtCount*70);
+                stmtCount++;
+            }
+        }
+        function decDraw(x,y){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="blue";
+            ctx.rect(x, y, 270, 50);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Declaration",x+10,y+20);
+        }
+        function stmtDraw(x,y){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="green";
+            ctx.rect(x, y, 270, 50);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Statement",x+10,y+20);
+        }
+        function Expression(){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="yellow";
+            ctx.rect(60, 60, 580, 180);
+            ctx.stroke();
+        }
+        function clearCanvas(){
+            ctx.clearRect(0,0,700,350);
+        }
+        function dummy(){
+            ctx.font="20px Arial";
+            ctx.fillText("존나 하기 싫다",250,300);
+        }
+        function resize(){
+            myCanvas.height += 500;
+            flag+=500;
+            $("#section").resize(flag+500);
+        }
+    </script> <!-- functions -->
+</head>
+<body>
+<canvas id="myCanvas" width="700" height="350;"></canvas>
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    myCanvas.width = 700;
+    myCanvas.height = 350;
+    myCanvas.style.left = "175px";
+    myCanvas.style.top = "100px";
+    myCanvas.style.position = "absolute";
+</script>
+<div id="header">
+    <h1>CONSOLE</h1>
+</div>
+<!-- buttons -->
+<div id="nav">
+    <div class="container">
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-danger" draggable="true" id="program"onclick="Program()">Program</button>
+            <button type="button" class="btn btn-warning" draggable="true" id="decs" onclick="Declarations()">Declarations</button>
+            <button type="button" class="btn btn-warning" draggable="true" id="stmts" onclick="Statements()">Statements</button>
+            <button type="button" class="btn btn-info" draggable="true" id="dec" onclick="Declaration()">Declaration</button>
+            <button type="button" class="btn btn-info" draggable="true" id="stmt" onclick="Statement()">Statement</button>
+            <button type="button" class="btn btn-default" draggable="true" id="clear" onclick="clearCanvas()">Clear</button>
+            <button type="button" class="btn btn-primary" draggable="true" id="1">1</button>
+            <button type="button" class="btn btn-primary" draggable="true" id="2">2</button>
+            <button type="button" class="btn btn-success btn-md" draggable="true" id="3">3</button>
+            <button type="button" class="btn btn-warning btn-md" draggable="true" id="4">4</button>
+            <button type="button" class="btn btn-primary" draggable="true" id="5" onclick="dummy()">5</button>
+            <button type="button" class="btn btn-primary" draggable="true" id="6" onclick="resize()">6</button>
+        </div>
+    </div>
+</div>
+<div id="section">
+</div>
+<div id="footer">
+</div>
+<!-- define modal -->
+<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                            <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                            <input type="text" class="form-control" id="psw" placeholder="Enter password">
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" checked>Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                    <p>Not a member? <a href="#">Sign Up</a></p>
+                    <p>Forgot <a href="#">Password?</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- fixto and modals -->
+<script>
+    $(document).ready(function(){
+        $("#program").click(function(){
+            $("#myModal").modal();
+        });
+        $("#decs").click(function(){
+            $("#myModal").modal();
+        });
+        $("#stmts").click(function(){
+            $("#myModal").modal();
+        });
+        $("#dec").click(function(){
+            $("#myModal").modal();
+        });
+        $("#stmt").click(function(){
+            $("#myModal").modal();
+        });
+    });
+    $(function() {
+        //hljs.initHighlightingOnLoad();
+        $('#nav').fixTo('body');
+    });
+</script>
+</body>
+</html>

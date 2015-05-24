@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <mata charset="utf-8"></mata>>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery.js"><\/script>')</script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-5002e1366084f15f"></script>
+    <script src="fixto.min.js"></script>
+    <style>
+        #nav {
+            line-height:30px;
+            background-color:black;
+            width:150px;
+            float:left;
+            padding:5px;
+        }
+        .modal-header, h4, .close {
+            background-color: #5cb85c;
+            color:white !important;
+            text-align: center;
+            font-size: 30px;
+        }
+        .modal-footer {
+            background-color: #f9f9f9;
+        }
+        .btn-success {
+            width: 100%;
+            padding: 10px;
+        }
+        #section {
+            width:350px;
+            height:3600px;
+            float:left;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+<div id="nav">
+    <div class="container">
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-danger" draggable="true" onclick="Program()">Program</button>
+            <button type="button" class="btn btn-warning" draggable="true" onclick="Declarations()">Declarations</button>
+            <button type="button" class="btn btn-warning" draggable="true" onclick="Statements()">Statements</button>
+            <button type="button" class="btn btn-info" draggable="true" onclick="Declaration()">Declaration</button>
+            <button type="button" class="btn btn-info" draggable="true" onclick="Statement()">Statement</button>
+            <button type="button" class="btn btn-default" draggable="true" onclick="clearCanvas()">Clear</button>
+            <button type="button" class="btn btn-primary" draggable="true" id="prog">EmptyBtn</button>
+            <button type="button" class="btn btn-primary" draggable="true" id="empty2">Empty</button>
+            <button type="button" class="btn btn-success btn-md" draggable="true" id="clickme1">Click me</button>
+            <button type="button" class="btn btn-warning btn-md" draggable="true" id="clickme2">Click me</button>
+            <button type="button" class="btn btn-primary" draggable="true" id="empty3"onclick="dummy()">Empty</button>
+            <button type="button" class="btn btn-primary" draggable="true" id="newuser">New user</button>
+        </div>
+    </div>
+</div>
+<div id="section">
+    <div class="container">
+        <!--<h2>Vertical Button Group</h2>-->
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-danger" draggable="true" id="ddd">Program</button>
+        </div>
+        <!-- Modal -->
+    </div>
+</div>
+<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                            <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                            <input type="text" class="form-control" id="psw" placeholder="Enter password">
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" checked>Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                    <p>Not a member? <a href="#">Sign Up</a></p>
+                    <p>Forgot <a href="#">Password?</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("#prog").click(function(){
+            $("#myModal").modal();
+        });
+    });
+    $(function() {
+        $('#nav').fixTo('body');
+    });
+</script>
+
+
+</body>
+</html>

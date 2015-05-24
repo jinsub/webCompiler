@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>First Page</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <style>
+        .test {
+            position: relative;
+            top: 50px;
+            height: 200px;
+            overflow: auto;
+            font-size: 28px;
+        }
+        #section1 {color: #fff; background-color: #1E88E5;}
+        #section2 {color: #fff; background-color: #673ab7;}
+        #section3 {color: #fff; background-color: #ff9800;}
+        #section41 {color: #fff; background-color: #00bcd4;}
+        #section42 {color: #fff; background-color: #009688;}
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+    </style>
+    <style>
+        #header {
+            background-color:black;
+            color:white;
+            text-align:center;
+            height:70px;
+            padding:5px;
+        }
+        #nav {
+            line-height:30px;
+            background-color:black;
+            width:150px;
+            float:left;
+            padding:5px;
+        }
+        #section {
+            width:350px;
+            height:3600px;
+            float:left;
+            padding:10px;
+        }
+        #footer {
+            background-color:black;
+            color:white;
+            clear:both;
+            text-align:center;
+            padding:5px;
+        }
+    </style>
+    <script>
+        var decCount = 0;
+        var stmtCount = 0;
+        function Program(){
+            ctx.beginPath();
+            ctx.lineWidth="15";
+            ctx.strokeStyle="red";
+            ctx.rect(0, 0,700,350);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Program",10,20);
+        }
+        function Declarations(){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="blue";
+            ctx.rect(20, 30, 310, 240);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Declarations",30,50);
+        }
+        function Statements(){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="green";
+            ctx.rect(370, 30, 310, 240);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Statements",380,50);
+        }
+        function Declaration(){
+            if(decCount < 3){
+                decDraw(40,65+decCount*70);
+                decCount++;
+            }
+        }
+        function Statement(){
+            if(stmtCount < 3){
+                stmtDraw(390,65+stmtCount*70);
+                stmtCount++;
+            }
+        }
+        function decDraw(x,y){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="blue";
+            ctx.rect(x, y, 270, 50);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Declaration",x+10,y+20);
+        }
+        function stmtDraw(x,y){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="green";
+            ctx.rect(x, y, 270, 50);
+            ctx.stroke();
+            ctx.font="15px Arial";
+            ctx.fillText("Statement",x+10,y+20);
+        }
+        function Expression(){
+            ctx.beginPath();
+            ctx.lineWidth="10";
+            ctx.strokeStyle="yellow";
+            ctx.rect(60, 60, 580, 180);
+            ctx.stroke();
+        }
+        function clearCanvas(){
+            ctx.clearRect(0,0,700,350);
+        }
+        function dummy(){
+            ctx.font="20px Arial";
+            ctx.fillText("존나 하기 싫다",250,300);
+        }
+    </script>
+</head>
+<body>
+
+<canvas id="myCanvas" width="700" height="350;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    myCanvas.width = 700;
+    myCanvas.height = 350;
+    myCanvas.style.left = "175px";
+    myCanvas.style.top = "100px";
+    myCanvas.style.position = "absolute";
+</script>
+
+
+<div id="header">
+    <h1>CONSOLE</h1>
+</div>
+
+<div id="nav">
+    <div class="container">
+        <!--<h2>Vertical Button Group</h2>-->
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-danger" draggable="true" onclick="Program()">Program</button>
+            <button type="button" class="btn btn-warning" draggable="true" onclick="Declarations()">Declarations</button>
+            <button type="button" class="btn btn-warning" draggable="true" onclick="Statements()">Statements</button>
+            <button type="button" class="btn btn-info" draggable="true" onclick="Declaration()">Declaration</button>
+            <button type="button" class="btn btn-info" draggable="true" onclick="Statement()">Statement</button>
+            <button type="button" class="btn btn-default" draggable="true" onclick="clearCanvas()">Clear</button>
+            <button type="button" class="btn btn-primary" draggable="true">Empty</button>
+            <button type="button" class="btn btn-primary" draggable="true">Empty</button>
+            <button class="btn btn-success btn-md" draggable="true" href="#dialogPage" data-rel="dialog">Click me</button>
+            <button class="btn btn-warning btn-md" draggable="true">Click me</button>
+            <button type="button" class="btn btn-primary" draggable="true" onclick="dummy()">Empty</button>
+            <button type="button" class="btn btn-primary" draggable="true" id="create-user">New user</button>
+        </div>
+    </div>
+</div>
+<div id="section">
+</div>
+
+<div id="footer">
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="jquery.js"><\/script>')</script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-5002e1366084f15f"></script>
+<script src="fixto.min.js"></script>
+<script>
+    $(function() {
+        //hljs.initHighlightingOnLoad();
+        $('#nav').fixTo('body');
+    });
+</script>
+</body>
+</html>
